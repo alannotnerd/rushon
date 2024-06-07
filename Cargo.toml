@@ -1,0 +1,9 @@
+[package]
+name = "rushon"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+colored = "2.1.0"
+serde = { version = "1.0.203", features = ["derive"] }
+toml = "0.8.14"

@@ -1,0 +1,13 @@
+[ping0]
+env = {}
+cwd = "/home/alan/"
+program = "/bin/ping"
+args = ["192.168.11.1"]
+deps = []
+
+[ping1]
+env = {}
+cwd = "."
+program = "makers"
+args = []
+deps = []
