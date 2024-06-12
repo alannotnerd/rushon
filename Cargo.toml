@@ -2,6 +2,9 @@
 name = "rushon"
 version = "0.1.2"
 edition = "2021"
+license = "MIT"
+description = "A simple and fast task runner for multipul components."
+
 
 [dependencies]
 colored = "2.1.0"
