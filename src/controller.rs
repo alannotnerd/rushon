@@ -60,7 +60,7 @@ impl Controller {
                                 Ok(line) => {
                                     println!(
                                         "{}: {}",
-                                        format!("{}({})", name, id).on_color(Color::TrueColor {
+                                        format!("{}({})", name, id).color(Color::TrueColor {
                                             r: (id % 64 % 4 * 50 + 55) as u8,
                                             g: (id % 64 / 4 % 4 * 50 + 55) as u8,
                                             b: (id % 64 / 16 % 4 * 50 + 55) as u8
