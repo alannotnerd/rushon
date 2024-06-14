@@ -6,6 +6,13 @@ use std::{
 
 use serde::{Deserialize, Serialize};
 
+#[derive(Debug, Clone, Copy, Serialize, Deserialize, PartialEq, PartialOrd, Ord, Eq)]
+pub enum RetryPolicy {
+    Always,
+    Never,
+    OnFail,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Manifest {
     pub env: Option<BTreeMap<String, String>>,
@@ -13,12 +20,12 @@ pub struct Manifest {
     pub program: PathBuf,
     pub args: Option<Vec<String>>,
     pub deps: Option<Vec<String>>,
+    pub retry: Option<RetryPolicy>,
 }
 
 impl Manifest {
-    pub fn load(path: PathBuf) -> Self {
-        let manifest = std::fs::read_to_string(path).expect("failed to read manifest file");
-        toml::from_str(&manifest).expect("failed to parse manifest file")
+    pub fn retry_policy(&self) -> RetryPolicy {
+        self.retry.unwrap_or(RetryPolicy::Never)
     }
 
     pub fn run(&self) -> Child {
